@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git 'https://github.com/Makara1122/ansible_cdci.git'
+                git branch: 'main', url: 'https://github.com/Makara1122/ansible_cdci.git'
             }
         }
         stage('Deploy') {
