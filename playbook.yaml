@@ -1,0 +1,33 @@
+---
+- hosts: myhosts
+  become: true
+  tasks:
+    - name: Update apt cache
+      apt:
+        update_cache: yes
+
+    - name: Install required packages
+      apt:
+        name: "{{ item }}"
+        state: present
+      loop:
+        - git
+        - nginx
+        - nodejs
+        - npm
+
+    - name: Clone application repository
+      git:
+        repo: 'https://github.com/your-repo.git'
+        dest: /var/www/myapp
+
+    - name: Install application dependencies
+      npm:
+        path: /var/www/myapp
+        state: present
+
+    - name: Restart Nginx
+      service:
+        name: nginx
+        state: restarted
+
