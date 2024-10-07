@@ -18,7 +18,7 @@
 
     - name: Clone application repository
       git:
-        repo: 'https://github.com/your-repo.git'
+        repo: 'https://github.com/Makara1122/ansible_cdci.git'
         dest: /var/www/myapp
 
     - name: Install application dependencies
